@@ -46,6 +46,18 @@ class Mailbox implements \IteratorAggregate
 
         return imap_num_msg($this->connection->getResource());
     }
+    
+    /**
+     * Get a header of the mailbox
+     *
+     * @return int
+     */
+    public function getMailboxHeader()
+    {
+        $this->init();
+
+        return imap_mailboxmsginfo($this->connection->getResource());
+    }
 
     /**
      * Get message ids
