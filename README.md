@@ -68,6 +68,14 @@ foreach ($mailboxes as $mailbox) {
     printf('Mailbox %s has %s messages', $mailbox->getName(), $mailbox->count());
 }
 ```
+Retrive a header of the mailbox and get number of emails and unread emails in the mailbox,
+
+```php
+$mailbox = $connection->getMailbox('INBOX');
+$header = $mailbox->getMailboxHeader()
+$unseen = $header->Unread;
+$nu_msg = $header->Nmsgs;
+```
 
 Or retrieve a specific mailbox:
 
