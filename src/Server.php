@@ -77,14 +77,24 @@ class Server
             }
         );
         
-        $resource = imap_open(
-            $this->getServerString(),
-            $username,
-            $password,
-            null,
-            1,
-            $this->parameters
-        );
+        if($this->parameters == NULL) {
+            $resource = imap_open(
+                $this->getServerString(),
+                $username,
+                $password,
+                null,
+                1
+            );
+        } else {
+            $resource = imap_open(
+                $this->getServerString(),
+                $username,
+                $password,
+                null,
+                1, 
+                $this->parameters
+            );
+        }
 
         if (false === $resource) {
             throw new AuthenticationFailedException($username);
